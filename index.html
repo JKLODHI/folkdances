@@ -105,6 +105,25 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            background: #f3f3f3;
+        }
+
+        .dance-image {
+            position: relative;
+            background: #f3f3f3;
+        }
+
+        .image-status {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            pointer-events: none;
         }
 
         .dance-content {
@@ -1440,7 +1459,16 @@
 
                     card.innerHTML = `
                         <div class="dance-image">
-                            <img src="${dance.image}" alt="${dance.name}">
+                            <img
+                                src="${dance.image}"
+                                alt="${dance.name}"
+                                data-dance="${dance.name.replace(/"/g, '&quot;')}"
+                                data-state="${state.replace(/"/g, '&quot;')}"
+                                data-fallback="${dance.image}"
+                                loading="lazy"
+                                referrerpolicy="no-referrer"
+                            >
+                            <div class="image-status">Finding a specific ${dance.name} image…</div>
                         </div>
                         <div class="dance-content">
                             <div class="dance-name">${dance.name}</div>
@@ -1459,9 +1487,129 @@
             console.log("Dances loaded successfully!");
         }
 
+
+        // Search Wikimedia Commons for a dance-specific image.
+        // This replaces the generic Unsplash placeholders with an image
+        // whose file title/metadata matches the dance and state.
+        const commonsImageCache = new Map();
+
+        async function findCommonsImage(danceName, stateName) {
+            const cacheKey = `${danceName}|||${stateName}`;
+            if (commonsImageCache.has(cacheKey)) {
+                return commonsImageCache.get(cacheKey);
+            }
+
+            const searchTerms = [
+                `${danceName} ${stateName} dance`,
+                `${danceName} India dance`,
+                `${danceName} folk dance`
+            ];
+
+            for (const term of searchTerms) {
+                try {
+                    const params = new URLSearchParams({
+                        action: "query",
+                        generator: "search",
+                        gsrsearch: `filetype:bitmap ${term}`,
+                        gsrnamespace: "6",
+                        gsrlimit: "8",
+                        prop: "imageinfo",
+                        iiprop: "url|mime",
+                        iiurlwidth: "900",
+                        format: "json",
+                        origin: "*"
+                    });
+
+                    const response = await fetch(
+                        `https://commons.wikimedia.org/w/api.php?${params.toString()}`
+                    );
+
+                    if (!response.ok) continue;
+
+                    const data = await response.json();
+                    const pages = Object.values(data?.query?.pages || {});
+
+                    const usable = pages
+                        .filter(page => {
+                            const info = page.imageinfo?.[0];
+                            return info &&
+                                   info.mime?.startsWith("image/") &&
+                                   (info.thumburl || info.url);
+                        })
+                        .sort((a, b) => {
+                            const aTitle = (a.title || "").toLowerCase();
+                            const bTitle = (b.title || "").toLowerCase();
+                            const d = danceName.toLowerCase();
+                            return Number(bTitle.includes(d)) - Number(aTitle.includes(d));
+                        });
+
+                    if (usable.length) {
+                        const info = usable[0].imageinfo[0];
+                        const url = info.thumburl || info.url;
+                        commonsImageCache.set(cacheKey, url);
+                        return url;
+                    }
+                } catch (error) {
+                    console.warn("Commons image search failed:", term, error);
+                }
+            }
+
+            commonsImageCache.set(cacheKey, null);
+            return null;
+        }
+
+        async function resolveDanceImage(img) {
+            const danceName = img.dataset.dance;
+            const stateName = img.dataset.state;
+            const fallback = img.dataset.fallback;
+            const status = img.parentElement.querySelector(".image-status");
+
+            try {
+                const commonsUrl = await findCommonsImage(danceName, stateName);
+                if (commonsUrl) {
+                    img.src = commonsUrl;
+                    img.onload = () => {
+                        if (status) status.style.display = "none";
+                    };
+                    img.onerror = () => {
+                        img.onerror = null;
+                        img.src = fallback;
+                        if (status) status.style.display = "none";
+                    };
+                } else {
+                    img.src = fallback;
+                    if (status) status.style.display = "none";
+                }
+            } catch {
+                img.src = fallback;
+                if (status) status.style.display = "none";
+            }
+        }
+
+        function startDanceImageLoading() {
+            const images = document.querySelectorAll(".dance-image img");
+
+            if (!("IntersectionObserver" in window)) {
+                images.forEach(resolveDanceImage);
+                return;
+            }
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        observer.unobserve(entry.target);
+                        resolveDanceImage(entry.target);
+                    }
+                });
+            }, { rootMargin: "500px 0px" });
+
+            images.forEach(img => observer.observe(img));
+        }
+
         // Load dances when page loads
         window.onload = function() {
             loadDances();
+            startDanceImageLoading();
         };
 
         // Search functionality
