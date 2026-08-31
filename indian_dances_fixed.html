@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Folk Dances - Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 30px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        .search-box {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        #searchInput {
+            width: 60%;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .state-section {
+            margin-bottom: 60px;
+        }
+
+        .state-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+
+        .dances-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .dance-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .dance-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .dance-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .dance-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dance-content {
+            padding: 25px;
+        }
+
+        .dance-name {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .dance-meaning {
+            color: #667eea;
+            font-size: 1em;
+            margin-bottom: 15px;
+            font-style: italic;
+            padding: 12px;
+            background: #f0f4ff;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .dance-description {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Indian Folk Dances & Festivals 🎭</h1>
+            <p class="subtitle">A Complete Celebration of India's Rich Cultural Heritage</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by state, dance name, or keyword..." />
+        </div>
+
+        <div id="content">
+            <!-- Content will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Dance data for all Indian states
+        const dances = {
+            "Andhra Pradesh": [
+                {
+                    name: "Kuchipudi",
+                    meaning: "Named after the village 'Kuchipudi' in Krishna district where it originated",
+                    description: "A classical dance-drama combining pure dance with expressive acting, traditionally performed by men dressed as women.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kuchipudi_Performance_DS.jpg/800px-Kuchipudi_Performance_DS.jpg"
+                },
+                {
+                    name: "Vilasini Natyam",
+                    meaning: "Vilasini means 'cultured woman'; Natyam means 'dance'",
+                    description: "A classical dance form performed by Devadasis in temples with delicate hand gestures.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Bhamakalpam",
+                    meaning: "Bhama refers to Satyabhama, Krishna's wife; Kalpam means 'story'",
+                    description: "A solo dance-drama depicting Satyabhama's devotion and anger towards Lord Krishna.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Dappu",
+                    meaning: "Named after the Dappu drum used in performance",
+                    description: "A tribal dance performed by beating the Dappu drum during festivals.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Kolattam",
+                    meaning: "Kol means 'stick'; Attam means 'dance'",
+                    description: "A stick dance where dancers strike small sticks rhythmically in circular formations.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Veeranatyam",
+                    meaning: "Veera means 'warrior'; Natyam means 'dance'",
+                    description: "A vigorous dance form depicting warrior traditions with powerful movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Tappeta Gullu",
+                    meaning: "Tappeta refers to a type of drum; Gullu means 'sound'",
+                    description: "A folk dance performed by Yadava community during festivals.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Lambadi",
+                    meaning: "Named after the Lambadi (Banjara) tribe",
+                    description: "A vibrant dance featuring colorful mirror-work costumes celebrating nomadic culture.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Arunachal Pradesh": [
+                {
+                    name: "Bardo Chham",
+                    meaning: "Bardo means 'intermediate state'; Chham means 'mask dance'",
+                    description: "A sacred Buddhist masked dance depicting the soul's journey between death and rebirth.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Popir",
+                    meaning: "Traditional harvest celebration dance of Adi tribe",
+                    description: "A harvest dance performed in groups celebrating agricultural prosperity.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Buiya",
+                    meaning: "Traditional dance celebrating victory and prosperity",
+                    description: "A tribal dance performed during festivals with traditional instruments.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Pasi Kongki",
+                    meaning: "Traditional dance of the Adi community",
+                    description: "A ceremonial dance performed during religious festivals with intricate footwork.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "War Dance",
+                    meaning: "Traditional warrior dance showcasing martial skills",
+                    description: "A vigorous dance depicting battle scenes with weapons and shields.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Assam": [
+                {
+                    name: "Bihu",
+                    meaning: "From Sanskrit 'Bishu' meaning 'to ask for prosperity'",
+                    description: "The vibrant folk dance celebrating Assamese New Year with energetic movements and dhol beats.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bihu_dance.jpg/800px-Bihu_dance.jpg"
+                },
+                {
+                    name: "Sattriya",
+                    meaning: "From 'Sattras' - Vaishnavite monasteries",
+                    description: "A classical dance form expressing devotion to Lord Krishna with graceful mudras.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Sattriya_Dance.jpg/800px-Sattriya_Dance.jpg"
+                },
+                {
+                    name: "Jhumur",
+                    meaning: "Jhumur means 'to sway rhythmically'",
+                    description: "A folk dance performed by tea garden workers with swaying movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Bagurumba",
+                    meaning: "Traditional dance of Bodo tribe",
+                    description: "A graceful dance performed by Bodo women depicting butterflies.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Bhortal",
+                    meaning: "Bhor means 'heavy' referring to the large cymbals used",
+                    description: "A dance performed with large cymbals creating rhythmic sounds.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Deodhani",
+                    meaning: "Deo means 'deity'; Dhani means 'possessor'",
+                    description: "A ritualistic dance where performers enter a trance-like state.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Ali Ai Ligang",
+                    meaning: "Traditional Mising tribe festival dance celebrating sowing season",
+                    description: "A folk dance celebrating the start of agricultural season.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Khel Gopal",
+                    meaning: "Khel means 'play'; Gopal refers to Lord Krishna",
+                    description: "A devotional dance-drama depicting stories from Krishna's childhood.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Bihar": [
+                {
+                    name: "Jat-Jatin",
+                    meaning: "Jat means 'young man'; Jatin means 'young woman'",
+                    description: "A romantic duet folk dance depicting love stories between rural couples.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Bidesia",
+                    meaning: "Bidesia means 'stranger' or 'someone from foreign land'",
+                    description: "A folk theatre depicting stories of migrant workers and their families.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Jhumar",
+                    meaning: "Jhumar means 'to sway gracefully'",
+                    description: "A graceful folk dance performed during harvest season.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Jhijhian",
+                    meaning: "Named after the Jhijhiya basket carried on head",
+                    description: "A devotional dance where women balance earthen lamps in bamboo baskets.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Kajri",
+                    meaning: "Traditional monsoon season folk dance",
+                    description: "A folk dance celebrating the arrival of rains with rhythmic movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Sama Chakeva",
+                    meaning: "Folk ritual dance celebrating brother-sister bond",
+                    description: "A traditional dance celebrating the relationship between siblings.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Domkach",
+                    meaning: "Traditional dance of Dom community",
+                    description: "An acrobatic folk dance featuring gymnastic feats and balancing acts.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Chhattisgarh": [
+                {
+                    name: "Panthi",
+                    meaning: "Panthi means 'followers of spiritual path' of Satnami community",
+                    description: "A ritualistic dance performed by Satnami community during festivals celebrating spiritual unity.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Raut Nacha",
+                    meaning: "Raut means 'cowherd'; Nacha means 'dance'",
+                    description: "A folk dance by Yadav community celebrating Lord Krishna's life as cowherd.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Karma",
+                    meaning: "Named after the sacred Karma tree worshipped during the festival",
+                    description: "A tribal dance performed during Karma festival for good harvest and prosperity.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Sua Nacha",
+                    meaning: "Sua means 'parrot'; Nacha means 'dance'",
+                    description: "A women's folk dance featuring movements mimicking parrots with wooden props.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Gaur",
+                    meaning: "Named after Gaur (bison) - the dance imitates the animal",
+                    description: "A tribal dance of Maria tribe mimicking the movements of bison.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Saila",
+                    meaning: "Named after the sticks (Saila) used in the dance",
+                    description: "A stick dance featuring acrobatic movements and rhythmic stick striking.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Gendi",
+                    meaning: "Gendi refers to the stilts used in the dance",
+                    description: "A unique folk dance performed on wooden stilts showcasing balance and skill.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Goa": [
+                {
+                    name: "Dhalo",
+                    meaning: "Traditional women's folk song and dance form",
+                    description: "A folk dance performed exclusively by women during festivals.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Fugdi",
+                    meaning: "Fugdi means 'quick energetic circular movement'",
+                    description: "A simple yet energetic circular dance performed by women during religious festivals.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Dekhni",
+                    meaning: "Dekhni means 'to see' or 'behold'",
+                    description: "A semi-classical dance blending Indian and Portuguese influences.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Kunbi",
+                    meaning: "Named after the Kunbi farming community",
+                    description: "A traditional dance of the Kunbi tribe celebrating harvest.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Goff",
+                    meaning: "Traditional circular dance form",
+                    description: "A circular folk dance performed during harvest festivals.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Mando",
+                    meaning: "Traditional ballroom-style dance",
+                    description: "A couple dance reflecting Portuguese influence with romantic themes.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Gujarat": [
+                {
+                    name: "Garba",
+                    meaning: "From 'Garbha Deep' meaning 'womb lamp'",
+                    description: "A devotional circular dance performed during Navratri honoring Goddess Durga.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Garba_Dance.jpg/800px-Garba_Dance.jpg"
+                },
+                {
+                    name: "Dandiya Raas",
+                    meaning: "Dandiya means 'sticks'; Raas means 'dance of divine love'",
+                    description: "A high-energy stick dance during Navratri celebrating Lord Krishna's divine dance.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Dandiya_raas.jpg/800px-Dandiya_raas.jpg"
+                },
+                {
+                    name: "Tippani",
+                    meaning: "Named after the wooden sticks (Tippani) used",
+                    description: "A folk dance performed by women laborers using rhythmic striking of wooden poles.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Padhar",
+                    meaning: "Traditional dance welcoming guests",
+                    description: "A folk dance performed to welcome guests and dignitaries.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Hudo",
+                    meaning: "Traditional tribal dance of Bharwad community",
+                    description: "A folk dance performed by shepherd community depicting their lifestyle.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Bhavai",
+                    meaning: "Traditional folk theatre dance",
+                    description: "A folk dance featuring balancing of multiple pots on the head while dancing.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Siddi Dhamal",
+                    meaning: "Traditional dance of Siddi community; Dhamal means 'energetic dance'",
+                    description: "A vigorous dance performed by Siddi community featuring acrobatic movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Haryana": [
+                {
+                    name: "Ghoomar",
+                    meaning: "Ghoomar means 'to twirl' or 'spin around'",
+                    description: "A traditional dance performed by women featuring graceful twirling movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Khoria",
+                    meaning: "Dance celebrating harvest season",
+                    description: "A harvest dance performed by men celebrating agricultural prosperity.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Phag",
+                    meaning: "Dance performed during Phalgun month (Holi season)",
+                    description: "A folk dance performed during Holi festival celebrating the arrival of spring.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Dhamal",
+                    meaning: "Dhamal means 'energetic rhythmic dance'",
+                    description: "A vigorous male folk dance performed during celebrations with dhol beats.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Loor",
+                    meaning: "Traditional harvest celebration dance",
+                    description: "A folk dance performed during harvest festivals with synchronized movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Ras Leela",
+                    meaning: "Raas means 'divine dance'; Leela means 'play'",
+                    description: "A devotional dance-drama depicting Lord Krishna's divine love.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Himachal Pradesh": [
+                {
+                    name: "Nati",
+                    meaning: "Traditional folk dance of the hills",
+                    description: "The most popular folk dance of Himachal performed in groups during festivals.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Kinnauri Nati",
+                    meaning: "Kinnauri from Kinnaur region; Nati means 'dance'",
+                    description: "A graceful dance from Kinnaur region featuring slow elegant movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Chham",
+                    meaning: "Chham means 'mask dance' performed by Buddhist monks",
+                    description: "A masked dance drama in Buddhist monasteries depicting victory of good over evil.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Kayang",
+                    meaning: "Traditional dance of Kinnaur valley",
+                    description: "A folk dance performed during local festivals with traditional Kinnauri attire.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Jhora",
+                    meaning: "Traditional group dance",
+                    description: "A group folk dance performed holding hands in circular formation.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Thoda",
+                    meaning: "Traditional martial dance with archery",
+                    description: "A unique dance combining martial arts and archery performed during festivals.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Namagen",
+                    meaning: "Traditional Buddhist dance",
+                    description: "A Buddhist ritual dance performed in monasteries during religious festivals.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Jammu & Kashmir": [
+                {
+                    name: "Rouf",
+                    meaning: "Traditional dance performed during spring",
+                    description: "A graceful dance performed by Kashmiri women during spring and Eid festivals.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Dumhal",
+                    meaning: "Named after the ceremonial costumes worn",
+                    description: "A dance performed by men wearing long colorful robes and tall conical caps.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Bhand Pather",
+                    meaning: "Bhand means 'jester'; Pather means 'play' or 'drama'",
+                    description: "A traditional folk theatre combining dance, music, and satire.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Hikat",
+                    meaning: "Traditional wedding dance",
+                    description: "A folk dance performed during weddings and celebrations with lively movements.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Kud",
+                    meaning: "Traditional dance-drama of Jammu region",
+                    description: "A ritualistic folk dance performed to appease local deities with masked performers.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Hafiza",
+                    meaning: "Traditional Muslim wedding dance",
+                    description: "A graceful dance performed by women during Muslim weddings.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Jharkhand": [
+                {
+                    name: "Chhau",
+                    meaning: "From 'Chhauni' meaning 'military camp' or 'mask'",
+                    description: "A semi-classical masked dance-drama depicting mythological stories with acrobatic movements.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Chhau_Dance.jpg/800px-Chhau_Dance.jpg"
+                },
+                {
+                    name: "Paika",
+                    meaning: "Paika means 'warrior' or 'soldier'",
+                    description: "A martial dance performed with swords and shields depicting warrior traditions.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Jhumar",
+                    meaning: "Jhumar means 'to sway gracefully'",
+                    description: "A harvest dance performed with swaying movements celebrating agricultural prosperity.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Santhal",
+                    meaning: "Traditional dance of Santhal tribe",
+                    description: "A tribal dance performed during festivals depicting tribal lifestyle.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Karma",
+                    meaning: "Named after the Karma tree worshipped",
+                    description: "A tribal dance worshipping the Karma tree for good harvest.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Domkach",
+                    meaning: "Traditional acrobatic dance",
+                    description: "An acrobatic folk dance featuring gymnastic feats and balancing acts.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Mundari",
+                    meaning: "Traditional dance of Munda tribe",
+                    description: "A tribal dance of Munda community performed during festivals with traditional drums.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Karnataka": [
+                {
+                    name: "Yakshagana",
+                    meaning: "Yaksha means 'nature spirits'; Gana means 'song' or 'music'",
+                    description: "A traditional theatre form combining dance, music, dialogue, and elaborate costumes.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Yakshagana_Performance.jpg/800px-Yakshagana_Performance.jpg"
+                },
+                {
+                    name: "Dollu Kunitha",
+                    meaning: "Dollu means 'drum'; Kunitha means 'dance'",
+                    description: "An energetic drum dance performed by men with large drums tied around necks.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Veeragase",
+                    meaning: "Veera means 'warrior'; Gase means 'dance'",
+                    description: "A vigorous warrior dance dedicated to Lord Veerabhadra with athletic movements.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Kamsale",
+                    meaning: "Named after Kamsale (brass cymbals) used",
+                    description: "A folk dance performed with brass cymbals creating rhythmic sounds.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Kunita",
+                    meaning: "Kunita means 'dance' in Kannada",
+                    description: "A general term for various folk dances of Karnataka featuring energetic movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Suggi Kunitha",
+                    meaning: "Suggi means 'harvest'; Kunitha means 'dance'",
+                    description: "A harvest dance celebrating agricultural prosperity with joyful movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Puja Kunitha",
+                    meaning: "Puja means 'worship'; Kunitha means 'dance'",
+                    description: "A ritualistic dance performed during temple festivals with devotional expressions.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Bayalata",
+                    meaning: "Bayalu means 'open field'; Ata means 'play'",
+                    description: "A traditional folk theatre performed in open spaces combining dance, music, and drama.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                }
+            ],
+            "Kerala": [
+                {
+                    name: "Kathakali",
+                    meaning: "Katha means 'story'; Kali means 'performance' or 'play'",
+                    description: "A classical dance-drama known for elaborate makeup, colorful costumes, and expressive gestures.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Kathakali_Performance.jpg/800px-Kathakali_Performance.jpg"
+                },
+                {
+                    name: "Mohiniyattam",
+                    meaning: "Mohini means 'enchantress'; Attam means 'dance'",
+                    description: "A graceful classical dance performed by women featuring swaying movements like palm trees.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Mohiniyattam_dancer.jpg/800px-Mohiniyattam_dancer.jpg"
+                },
+                {
+                    name: "Theyyam",
+                    meaning: "From 'Deivam' meaning 'God'",
+                    description: "A ritualistic dance form where performers embody divine spirits through elaborate costumes.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Thiruvathira",
+                    meaning: "Named after the star Ardra (Thiruvathira in Malayalam)",
+                    description: "A graceful dance performed by women in circles during Thiruvathira festival.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Ottamthullal",
+                    meaning: "Ottam means 'running'; Thullal means 'dancing'",
+                    description: "A solo dance performance combining satire and social commentary with rhythmic movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Kaikottikali",
+                    meaning: "Kai means 'hand'; Kotti means 'clapping'; Kali means 'play'",
+                    description: "A group dance performed by women in circles with rhythmic clapping during Onam.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Margam Kali",
+                    meaning: "Margam means 'path'; Kali means 'dance'",
+                    description: "A Christian folk dance depicting the journey of St. Thomas to India.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Kolkali",
+                    meaning: "Kol means 'stick'; Kali means 'play' or 'dance'",
+                    description: "A stick dance performed with rhythmic striking of wooden sticks creating musical patterns.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Pulikali",
+                    meaning: "Puli means 'tiger'; Kali means 'play'",
+                    description: "A colorful folk art where men painted as tigers perform during Onam celebrations.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Madhya Pradesh": [
+                {
+                    name: "Tertali",
+                    meaning: "Tertali means 'thirteen cymbals' tied to different body parts",
+                    description: "A ritualistic dance performed by Kamar tribe women with cymbals tied to their bodies.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Jawara",
+                    meaning: "Jawara means 'farmer' or 'agricultural worker'",
+                    description: "A harvest dance performed by women balancing decorated pots on their heads.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Matki",
+                    meaning: "Matki means 'earthen pot' balanced during dance",
+                    description: "A folk dance where women balance multiple earthen pots while performing intricate footwork.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Karma",
+                    meaning: "Named after the Karma tree worshipped",
+                    description: "A tribal dance performed during Karma festival to worship the Karma tree.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Gaur",
+                    meaning: "Named after Gaur (bison) - mimics the animal",
+                    description: "A tribal dance of Gond and Baiga tribes mimicking the movements of bison.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Saila",
+                    meaning: "Named after the sticks (Saila) used in the dance",
+                    description: "A stick dance performed by youth during festivals featuring acrobatic movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Phulpati",
+                    meaning: "Phul means 'flower'; Pati means 'leaf'",
+                    description: "A dance performed by women during festivals celebrating nature.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Maanch",
+                    meaning: "Traditional folk theatre combining dance and drama",
+                    description: "A folk theatre form combining dance, music, and drama depicting mythological themes.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                }
+            ],
+            "Maharashtra": [
+                {
+                    name: "Lavani",
+                    meaning: "From 'Lavanya' meaning 'beauty'",
+                    description: "A powerful and energetic dance performed to fast-paced music known for rhythmic movements.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Lavani_Dance.jpg/800px-Lavani_Dance.jpg"
+                },
+                {
+                    name: "Tamasha",
+                    meaning: "Tamasha means 'entertainment' or 'spectacle'",
+                    description: "A traditional folk theatre combining music, dance, and drama with social commentary.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Koli",
+                    meaning: "Named after the Koli fishing community",
+                    description: "A folk dance performed by Koli fishing community depicting their daily life and fishing activities.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Dhangari Gaja",
+                    meaning: "Dhangari means 'shepherd'; Gaja means 'thunder'",
+                    description: "A shepherd dance performed by Dhangar community celebrating their pastoral lifestyle.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Powada",
+                    meaning: "Powada means 'ballad of warriors'",
+                    description: "A ballad form narrating heroic deeds of Maratha warriors with rhythmic recitation.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Gondhal",
+                    meaning: "Traditional ritualistic dance-drama",
+                    description: "A ritualistic folk dance performed to worship the goddess with dramatic expressions.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Lezim",
+                    meaning: "Named after Lezim (musical instrument with jingling cymbals)",
+                    description: "A vigorous dance performed with lezim creating rhythmic jingling sounds.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Dindi",
+                    meaning: "Named after the Dindi (small drum)",
+                    description: "A devotional dance performed during pilgrimage with small drums and devotional songs.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                }
+            ],
+            "Manipur": [
+                {
+                    name: "Manipuri",
+                    meaning: "Named after Manipur meaning 'land of jewels'",
+                    description: "A graceful classical dance depicting love story of Radha and Krishna with delicate movements.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Manipuri_Dance.jpg/800px-Manipuri_Dance.jpg"
+                },
+                {
+                    name: "Nupa Pala",
+                    meaning: "Nupa means 'drum'; Pala means 'performance'",
+                    description: "A traditional drum dance performed during festivals with intricate rhythmic patterns.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Thang-Ta",
+                    meaning: "Thang means 'sword'; Ta means 'spear'",
+                    description: "A martial art form incorporating dance elements showcasing sword and spear techniques.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Pung Cholom",
+                    meaning: "Pung means 'drum'; Cholom means 'dance'",
+                    description: "A spectacular drum dance where performers play the pung drum while executing acrobatic movements.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Khamba Thoibi",
+                    meaning: "Named after legendary Manipuri lovers Khamba and Thoibi",
+                    description: "A classical dance-drama depicting the legendary love story of Khamba and Thoibi.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Maibi",
+                    meaning: "Maibi are traditional priestesses",
+                    description: "A ritualistic dance performed by Maibi priestesses during religious ceremonies.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Meghalaya": [
+                {
+                    name: "Nongkrem",
+                    meaning: "Traditional thanksgiving festival dance",
+                    description: "A religious dance performed during Nongkrem festival by Khasi tribe to thank goddess for good harvest.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Laho",
+                    meaning: "Traditional harvest celebration dance",
+                    description: "A folk dance performed by Pnar tribe during harvest festivals with synchronized movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Shad Suk Mynsiem",
+                    meaning: "Shad means 'dance'; Suk Mynsiem means 'peaceful heart'",
+                    description: "A thanksgiving dance performed by Khasi tribe during spring celebrating prosperity.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Wangala",
+                    meaning: "Traditional harvest festival dance of Garo tribe",
+                    description: "A post-harvest festival dance of Garo tribe celebrating the harvest season with drums.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Lahoo",
+                    meaning: "Traditional Pnar tribal dance",
+                    description: "A folk dance performed by Pnar community during festivals with traditional instruments.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Mizoram": [
+                {
+                    name: "Cheraw",
+                    meaning: "Named after the bamboo staves used in the dance",
+                    description: "The famous bamboo dance where dancers step in and out between clapping bamboo staves with precise timing.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cheraw_Dance.jpg/800px-Cheraw_Dance.jpg"
+                },
+                {
+                    name: "Khuallam",
+                    meaning: "Guest dance performed to welcome visitors",
+                    description: "A traditional dance performed to welcome and honor guests during festivals and celebrations.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Chheih Lam",
+                    meaning: "Traditional dance celebrating victory",
+                    description: "A victory dance performed to celebrate successful events and achievements.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Sarlamkai",
+                    meaning: "Traditional tribal dance",
+                    description: "A folk dance performed during festivals with traditional music depicting tribal culture.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Chai",
+                    meaning: "Traditional festive dance",
+                    description: "A group dance performed during festivals and celebrations with rhythmic movements and folk songs.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Nagaland": [
+                {
+                    name: "Hornbill Festival Dance",
+                    meaning: "Named after the hornbill bird considered sacred by Naga tribes",
+                    description: "Various traditional war dances and folk dances performed during Hornbill Festival.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Changsu",
+                    meaning: "Traditional Naga war dance",
+                    description: "A warrior dance of Chang tribe performed during festivals with energetic movements and traditional weapons.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Zeliang",
+                    meaning: "Traditional dance of Zeliang tribe",
+                    description: "A folk dance performed by Zeliang tribe during harvest festivals with traditional attire.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Khamba Lim",
+                    meaning: "Traditional circular dance",
+                    description: "A circular folk dance performed during festivals with participants holding hands.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Moyashai",
+                    meaning: "Traditional war dance of Konyak tribe",
+                    description: "A vigorous war dance performed by Konyak warriors depicting hunting and battle scenes.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Rengma",
+                    meaning: "Traditional dance of Rengma tribe",
+                    description: "A folk dance performed by Rengma tribe during festivals celebrating their cultural traditions.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Odisha": [
+                {
+                    name: "Odissi",
+                    meaning: "From 'Odisha' (formerly Orissa)",
+                    description: "One of India's oldest classical dance forms characterized by fluid movements and intricate footwork.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Odissi_Performance.jpg/800px-Odissi_Performance.jpg"
+                },
+                {
+                    name: "Sambalpuri",
+                    meaning: "From Sambalpur region",
+                    description: "A vibrant folk dance celebrating harvest and festivals with energetic movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Ghanta Patua",
+                    meaning: "Ghanta means 'bell'; Patua means 'painter' or 'performer'",
+                    description: "A traditional dance performed with bells tied to body creating musical rhythms.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Chhau",
+                    meaning: "From 'Chhauni' meaning 'military camp' or 'mask'",
+                    description: "A masked dance-drama depicting mythological stories with acrobatic movements.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Dalkhai",
+                    meaning: "Traditional dance of western Odisha",
+                    description: "A folk dance performed by women during harvest festivals with graceful movements.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Ghumura",
+                    meaning: "Named after the Ghumura drum",
+                    description: "A traditional drum dance performed with large Ghumura drums creating powerful rhythms.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Medha Nacha",
+                    meaning: "Medha means 'ram'; Nacha means 'dance'",
+                    description: "A folk dance where performers wear ram head masks depicting animal movements.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Gotipua",
+                    meaning: "Goti means 'one'; Pua means 'boy' - single boy dance",
+                    description: "An acrobatic dance performed by young boys in female attire showcasing flexibility.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                }
+            ],
+            "Punjab": [
+                {
+                    name: "Bhangra",
+                    meaning: "Possibly from 'Bhang' consumed during celebrations",
+                    description: "An energetic and joyful dance performed during Vaisakhi festival celebrating harvest with dhol beats.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Bhangra_Dance.jpg/800px-Bhangra_Dance.jpg"
+                },
+                {
+                    name: "Giddha",
+                    meaning: "Named after hopping movements like a sparrow",
+                    description: "A lively folk dance performed by Punjabi women featuring clapping, singing, and playful movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Jhumar",
+                    meaning: "Jhumar means 'to sway gracefully'",
+                    description: "A gentle folk dance performed during weddings and festivals with swaying movements.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Sammi",
+                    meaning: "Traditional dance performed by women",
+                    description: "A folk dance performed by Punjabi women with graceful movements and traditional folk songs.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Kikli",
+                    meaning: "Traditional spinning dance of girls",
+                    description: "A playful dance where two girls hold hands and spin around singing folk songs.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Dhamal",
+                    meaning: "Dhamal means 'energetic rhythmic dance'",
+                    description: "A vigorous male folk dance performed at religious shrines with spiritual fervor.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Luddi",
+                    meaning: "Traditional victory dance",
+                    description: "A folk dance performed to celebrate victories and joyous occasions.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Rajasthan": [
+                {
+                    name: "Ghoomar",
+                    meaning: "Ghoomar means 'to twirl' or 'spin in circles'",
+                    description: "A traditional dance performed by women in flowing ghagras featuring graceful spinning movements.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Ghoomar_Dance.jpg/800px-Ghoomar_Dance.jpg"
+                },
+                {
+                    name: "Kalbeliya",
+                    meaning: "Snake charmer community dance",
+                    description: "A sensuous dance performed by women of Kalbeliya tribe with sinuous movements mimicking serpents.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Kalbeliya_Dance.jpg/800px-Kalbeliya_Dance.jpg"
+                },
+                {
+                    name: "Kachhi Ghodi",
+                    meaning: "Kachhi means 'dummy'; Ghodi means 'horse'",
+                    description: "A folk dance where men perform with dummy horses depicting brave Rajput warriors.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Teratali",
+                    meaning: "Teratali means 'thirteen cymbals' tied to body parts",
+                    description: "A ritualistic dance performed by women with cymbals tied to various body parts.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Bhavai",
+                    meaning: "Traditional acrobatic folk dance",
+                    description: "A spectacular dance featuring balancing of multiple pots on head while dancing.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Chari",
+                    meaning: "Chari means 'pot' with lit lamps",
+                    description: "A dance performed by women balancing brass pots with lit lamps on their heads.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Kathputli",
+                    meaning: "Kath means 'wood'; Putli means 'doll'",
+                    description: "A traditional puppet dance form where puppeteers manipulate wooden puppets.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Gair",
+                    meaning: "Traditional circular dance",
+                    description: "A folk dance performed in circular formations during festivals with sticks.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                }
+            ],
+            "Sikkim": [
+                {
+                    name: "Maruni",
+                    meaning: "Traditional folk dance celebrating nature",
+                    description: "A folk dance performed during festivals depicting stories of nature and harvest.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Singhi Chham",
+                    meaning: "Singhi means 'snow lion'; Chham means 'masked dance'",
+                    description: "A masked dance performed by Buddhist monks depicting the snow lion.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Tashi Yangku",
+                    meaning: "Traditional dance celebrating prosperity",
+                    description: "A folk dance performed during festivals celebrating good fortune and prosperity.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Lu Khangthamo",
+                    meaning: "Traditional Lepcha tribal dance",
+                    description: "A folk dance of Lepcha tribe performed during festivals with traditional instruments.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Tamang Selo",
+                    meaning: "Traditional dance of Tamang community",
+                    description: "A folk dance performed by Tamang community with traditional Damphu drum.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Tamil Nadu": [
+                {
+                    name: "Bharatanatyam",
+                    meaning: "Bharat means 'India'; Natyam means 'dance' or from Bharata Muni",
+                    description: "One of the oldest classical dance forms characterized by fixed upper torso and intricate footwork.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Bharatanatyam_Performance.jpg/800px-Bharatanatyam_Performance.jpg"
+                },
+                {
+                    name: "Karakattam",
+                    meaning: "Karak means 'pot'; Attam means 'dance'",
+                    description: "A traditional folk dance where performers balance pots on their heads while dancing.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Kavadi Attam",
+                    meaning: "Kavadi means 'burden' or 'decorated pole'; Attam means 'dance'",
+                    description: "A devotional dance performed carrying kavadi as an offering to Lord Murugan.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Oyilattam",
+                    meaning: "Oyil means 'beauty' or 'grace'; Attam means 'dance'",
+                    description: "A graceful folk dance performed in a circle with handkerchiefs depicting themes of love.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Karagam",
+                    meaning: "Karagam refers to the decorated pot carried",
+                    description: "A folk dance where performers balance decorated pots filled with water while dancing.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Kummi",
+                    meaning: "Traditional hand-clapping dance",
+                    description: "A folk dance performed by women in circles with rhythmic hand clapping.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Kolattam",
+                    meaning: "Kol means 'stick'; Attam means 'dance'",
+                    description: "A stick dance where dancers strike small sticks rhythmically in circular formations.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Mayil Attam",
+                    meaning: "Mayil means 'peacock'; Attam means 'dance'",
+                    description: "A folk dance imitating the graceful movements of a peacock with colorful costumes.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Puli Attam",
+                    meaning: "Puli means 'tiger'; Attam means 'dance'",
+                    description: "A folk dance where performers paint themselves as tigers and enact hunting scenes.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "Telangana": [
+                {
+                    name: "Perini Shivatandavam",
+                    meaning: "Perini means 'vigorous dance'; Shiva - Lord Shiva; Tandavam - 'cosmic dance'",
+                    description: "An ancient warrior dance performed before battle dedicated to Lord Shiva with vigorous movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Lambadi",
+                    meaning: "Dance of the Banjara tribe",
+                    description: "A vibrant folk dance of Banjara community featuring colorful mirror-work costumes.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Gusadi",
+                    meaning: "Traditional tribal dance of Gonds",
+                    description: "A tribal dance performed by Gond tribe during festivals with traditional attire.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Bonalu",
+                    meaning: "Traditional festival dance",
+                    description: "A folk dance performed during Bonalu festival honoring goddess Mahakali.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Dappu",
+                    meaning: "Named after the Dappu drum",
+                    description: "A tribal dance performed with Dappu drums during festivals and celebrations.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Tripura": [
+                {
+                    name: "Hojagiri",
+                    meaning: "Traditional dance of Reang tribe",
+                    description: "A spectacular balancing dance performed by women balancing earthen pots on their heads while dancing on pitchers.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Garia",
+                    meaning: "Dance performed during Garia Puja festival",
+                    description: "A tribal dance performed during Garia festival celebrating harvest season with rhythmic movements.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Lebang",
+                    meaning: "Traditional harvest dance",
+                    description: "A folk dance performed during harvest celebrations with traditional music.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Bizhu",
+                    meaning: "New Year celebration dance",
+                    description: "A festive dance performed during Bizhu (New Year) celebrations by Chakma tribe.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                }
+            ],
+            "Uttar Pradesh": [
+                {
+                    name: "Kathak",
+                    meaning: "From 'Katha' meaning 'story'",
+                    description: "A classical dance form characterized by intricate footwork, spins, and storytelling through expressive gestures.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Kathak_Performance.jpg/800px-Kathak_Performance.jpg"
+                },
+                {
+                    name: "Raslila",
+                    meaning: "Raas means 'divine dance'; Lila means 'play' or 'sport'",
+                    description: "A devotional dance-drama depicting divine love between Lord Krishna and Radha.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Charkula",
+                    meaning: "Charkula means 'circular lamp pyramid' balanced on head",
+                    description: "A spectacular dance where women balance a circular pyramid of lamps on their heads.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Nautanki",
+                    meaning: "Traditional folk theatre",
+                    description: "A folk theatre form combining music, dance, and drama depicting mythological stories.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Karma",
+                    meaning: "Named after Karma tree worshipped",
+                    description: "A tribal dance performed during Karma festival worshipping the Karma tree for prosperity.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Pai Danda",
+                    meaning: "Traditional stick dance",
+                    description: "A folk dance performed with sticks creating rhythmic patterns during festivals.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Dadra",
+                    meaning: "Traditional folk music and dance",
+                    description: "A light classical folk dance performed with romantic themes and graceful movements.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Uttarakhand": [
+                {
+                    name: "Langvir Nritya",
+                    meaning: "Langvir means 'acrobatic'; Nritya means 'dance'",
+                    description: "An acrobatic dance where performers swing from a tall pole using ropes.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Barada Nati",
+                    meaning: "Barada - region name; Nati means 'folk dance'",
+                    description: "A traditional folk dance performed during festivals celebrating hill culture.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Jhumailo",
+                    meaning: "Jhumailo means 'swaying movement' or 'rhythmic dance'",
+                    description: "A group dance performed during harvest festivals with synchronized movements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Chholiya",
+                    meaning: "Traditional sword dance",
+                    description: "A vigorous sword dance performed during weddings depicting warrior traditions.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Jhora",
+                    meaning: "Traditional group dance",
+                    description: "A folk dance performed holding hands in circular formation during festivals.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Pandav Nritya",
+                    meaning: "Dance depicting Pandavas from Mahabharata",
+                    description: "A traditional dance-drama depicting stories of Pandavas from Mahabharata.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                }
+            ],
+            "West Bengal": [
+                {
+                    name: "Chhau",
+                    meaning: "From 'Chhauni' meaning 'military camp' or 'Chhaya' meaning 'shadow'",
+                    description: "A masked dance-drama depicting mythological and martial themes with acrobatic movements.",
+                    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Chhau_Dance.jpg/800px-Chhau_Dance.jpg"
+                },
+                {
+                    name: "Rabindra Nritya",
+                    meaning: "Rabindra - named after Rabindranath Tagore; Nritya means 'dance'",
+                    description: "A lyrical dance form created by Rabindranath Tagore blending classical and folk elements.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Gambhira",
+                    meaning: "From 'Gambhir' meaning 'serious' or named after Lord Shiva's temple",
+                    description: "A folk dance-drama performed during festivals featuring social satire.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                },
+                {
+                    name: "Jatra",
+                    meaning: "Jatra means 'journey' or 'procession'",
+                    description: "A traditional folk theatre combining dance, music, and drama.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Baul",
+                    meaning: "Baul refers to mystic minstrels",
+                    description: "A spiritual dance performed by Baul singers expressing devotion through music.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Kathi",
+                    meaning: "Traditional stick dance",
+                    description: "A folk dance performed with sticks creating rhythmic patterns during festivals.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Dhali",
+                    meaning: "Traditional drum dance",
+                    description: "A folk dance performed with drums and rhythmic movements during harvest festivals.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ],
+            "Ladakh": [
+                {
+                    name: "Jabro",
+                    meaning: "Traditional harvest celebration dance",
+                    description: "A joyful folk dance performed during harvest festivals celebrating agricultural prosperity.",
+                    image: "https://images.unsplash.com/photo-1598197748967-b4dbe8528f2c?w=800"
+                },
+                {
+                    name: "Shondol",
+                    meaning: "Traditional Buddhist ceremonial dance",
+                    description: "A religious dance performed during Buddhist festivals and ceremonies.",
+                    image: "https://images.unsplash.com/photo-1583224964811-5c2e1e5e8f91?w=800"
+                },
+                {
+                    name: "Chhams",
+                    meaning: "Masked dance performed by Buddhist monks",
+                    description: "A sacred masked dance performed in monasteries depicting victory of good over evil.",
+                    image: "https://images.unsplash.com/photo-1524863479829-916d8e77f114?w=800"
+                },
+                {
+                    name: "Raldi",
+                    meaning: "Traditional folk dance",
+                    description: "A folk dance performed during festivals and celebrations with traditional music.",
+                    image: "https://images.unsplash.com/photo-1599558209638-cf7e512e5c4f?w=800"
+                }
+            ]
+        };
+
+        // This is a test - showing only one state first
+        console.log("Dance data loaded:", dances);
+
+        // Function to render all dances
+        function loadDances() {
+            const content = document.getElementById('content');
+
+            for (let state in dances) {
+                // Create state section
+                const stateSection = document.createElement('div');
+                stateSection.className = 'state-section';
+
+                // Create state header
+                const stateHeader = document.createElement('div');
+                stateHeader.className = 'state-header';
+                stateHeader.textContent = state;
+                stateSection.appendChild(stateHeader);
+
+                // Create dances grid
+                const grid = document.createElement('div');
+                grid.className = 'dances-grid';
+
+                // Add each dance
+                dances[state].forEach(dance => {
+                    const card = document.createElement('div');
+                    card.className = 'dance-card';
+
+                    card.innerHTML = `
+                        <div class="dance-image">
+                            <img src="${dance.image}" alt="${dance.name}">
+                        </div>
+                        <div class="dance-content">
+                            <div class="dance-name">${dance.name}</div>
+                            <div class="dance-meaning">${dance.meaning}</div>
+                            <div class="dance-description">${dance.description}</div>
+                        </div>
+                    `;
+
+                    grid.appendChild(card);
+                });
+
+                stateSection.appendChild(grid);
+                content.appendChild(stateSection);
+            }
+
+            console.log("Dances loaded successfully!");
+        }
+
+        // Load dances when page loads
+        window.onload = function() {
+            loadDances();
+        };
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.dance-card');
+            const sections = document.querySelectorAll('.state-section');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.dance-card[style="display: block;"], .dance-card:not([style*="display: none"])');
+                if (visibleCards.length === 0 && searchTerm !== '') {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
